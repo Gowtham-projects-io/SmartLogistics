@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Plus, Package, Clock, CheckCircle, AlertCircle, Check, X, CheckCheck } from 'lucide-react'
 import { fetchRequests, createRequest, updateRequestStatus } from '../services/api'
 import { useNotifications } from '../context/NotificationContext'
@@ -60,10 +61,10 @@ export default function ShipmentRequests() {
             <h2 className="section-title text-xl text-[#172033]">Shipment Requests</h2>
             <p className="section-sub text-[#64748B]">All incoming freight and capacity sharing requests</p>
           </div>
-          <a href="/matching" className="btn-primary text-xs md:text-sm py-2 px-3.5">
+          <Link to="/matching" className="btn-primary text-xs md:text-sm py-2 px-3.5">
             <Plus size={15} />
             <span>New Shipment</span>
-          </a>
+          </Link>
         </div>
 
         {actionMessage && (

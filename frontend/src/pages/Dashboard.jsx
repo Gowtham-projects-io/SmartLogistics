@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   Truck, Package, GitMerge, TrendingDown, Zap, Activity, Play, Bell,
 } from 'lucide-react'
@@ -23,6 +24,7 @@ const CHART_TOOLTIP = {
 }
 
 export default function Dashboard({ onStartDemo }) {
+  const navigate = useNavigate()
   const [analytics, setAnalytics] = useState(null)
   const [loading, setLoading] = useState(true)
 
@@ -78,7 +80,7 @@ export default function Dashboard({ onStartDemo }) {
           </p>
           <button
             className="btn-accent w-full text-sm font-semibold py-2.5"
-            onClick={() => window.location.href = '/matching'}
+            onClick={() => navigate('/matching')}
           >
             <Play size={14} fill="currentColor" />
             Find Matching Trucks
@@ -167,11 +169,11 @@ export default function Dashboard({ onStartDemo }) {
         {/* Quick Actions — mobile only */}
         <div className="md:hidden grid grid-cols-3 gap-3">
           {[
-            { label: 'Find Match', icon: GitMerge, href: '/matching', color: 'navy' },
-            { label: 'View Price', icon: TrendingDown, href: '/pricing', color: 'green' },
-            { label: 'Analytics', icon: Zap, href: '/analytics', color: 'orange' },
-          ].map(({ label, icon: Icon, href, color }) => (
-            <a key={label} href={href}
+            { label: 'Find Match', icon: GitMerge, to: '/matching', color: 'navy' },
+            { label: 'View Price', icon: TrendingDown, to: '/pricing', color: 'green' },
+            { label: 'Analytics', icon: Zap, to: '/analytics', color: 'orange' },
+          ].map(({ label, icon: Icon, to, color }) => (
+            <Link key={label} to={to}
                className="card flex flex-col items-center gap-2 py-4 text-center active:scale-95 transition-transform">
               <div className={`p-2.5 rounded-xl ${
                 color === 'navy'  ? 'bg-[#0F2747]/10 text-[#0F2747]' :
@@ -181,7 +183,7 @@ export default function Dashboard({ onStartDemo }) {
                 <Icon size={18} />
               </div>
               <span className="text-[11px] font-semibold text-[#172033]">{label}</span>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

@@ -1,0 +1,908 @@
+{
+  "routes": [
+    {
+      "truckId": "TN-38-A1234",
+      "driverName": "Rajesh Kumar",
+      "origin": "Chennai",
+      "destination": "Coimbatore",
+      "originCoords": [
+        13.0827,
+        80.2707
+      ],
+      "destinationCoords": [
+        11.0168,
+        76.9558
+      ],
+      "polyline": [
+        [
+          13.0827,
+          80.2707
+        ],
+        [
+          13.0524,
+          80.2141
+        ],
+        [
+          13.0105,
+          79.9679
+        ],
+        [
+          12.9368,
+          79.7253
+        ],
+        [
+          12.9165,
+          79.1325
+        ],
+        [
+          12.8406,
+          78.9999
+        ],
+        [
+          12.6934,
+          78.8206
+        ],
+        [
+          12.5165,
+          78.5538
+        ],
+        [
+          11.6834,
+          78.1588
+        ],
+        [
+          11.4755,
+          77.9629
+        ],
+        [
+          11.341,
+          77.7172
+        ],
+        [
+          11.1085,
+          77.3411
+        ],
+        [
+          11.0168,
+          76.9558
+        ]
+      ],
+      "capacityKg": 10000,
+      "availableCapacityKg": 5000,
+      "cargoType": "general",
+      "departureTime": "2026-09-21T06:00:00",
+      "baseTripCost": 9500,
+      "status": "active"
+    },
+    {
+      "truckId": "TN-33-B5678",
+      "driverName": "Murugan Selvam",
+      "origin": "Chennai",
+      "destination": "Coimbatore",
+      "originCoords": [
+        13.0827,
+        80.2707
+      ],
+      "destinationCoords": [
+        11.0168,
+        76.9558
+      ],
+      "polyline": [
+        [
+          13.0827,
+          80.2707
+        ],
+        [
+          12.9716,
+          80.1951
+        ],
+        [
+          12.8342,
+          79.7023
+        ],
+        [
+          12.7219,
+          79.12
+        ],
+        [
+          12.551,
+          78.82
+        ],
+        [
+          11.9102,
+          78.38
+        ],
+        [
+          11.6634,
+          78.1488
+        ],
+        [
+          11.4,
+          77.88
+        ],
+        [
+          11.0168,
+          76.9558
+        ]
+      ],
+      "capacityKg": 8000,
+      "availableCapacityKg": 3200,
+      "cargoType": "packaged_goods",
+      "departureTime": "2026-09-21T08:00:00",
+      "baseTripCost": 8800,
+      "status": "active"
+    },
+    {
+      "truckId": "TN-45-C9012",
+      "driverName": "Senthil Arumugam",
+      "origin": "Chennai",
+      "destination": "Madurai",
+      "originCoords": [
+        13.0827,
+        80.2707
+      ],
+      "destinationCoords": [
+        9.9252,
+        78.1198
+      ],
+      "polyline": [
+        [
+          13.0827,
+          80.2707
+        ],
+        [
+          12.8254,
+          80.0365
+        ],
+        [
+          12.5604,
+          79.85
+        ],
+        [
+          12.34,
+          79.68
+        ],
+        [
+          11.94,
+          79.52
+        ],
+        [
+          11.748,
+          79.25
+        ],
+        [
+          10.9305,
+          78.6177
+        ],
+        [
+          10.45,
+          78.4
+        ],
+        [
+          10.1,
+          78.2
+        ],
+        [
+          9.9252,
+          78.1198
+        ]
+      ],
+      "capacityKg": 12000,
+      "availableCapacityKg": 6000,
+      "cargoType": "textiles",
+      "departureTime": "2026-09-21T07:00:00",
+      "baseTripCost": 11000,
+      "status": "active"
+    },
+    {
+      "truckId": "TN-02-D3456",
+      "driverName": "Karthik Venkatesh",
+      "origin": "Chennai",
+      "destination": "Bengaluru",
+      "originCoords": [
+        13.0827,
+        80.2707
+      ],
+      "destinationCoords": [
+        12.9716,
+        77.5946
+      ],
+      "polyline": [
+        [
+          13.0827,
+          80.2707
+        ],
+        [
+          12.98,
+          80.08
+        ],
+        [
+          12.9165,
+          79.1325
+        ],
+        [
+          12.85,
+          78.5
+        ],
+        [
+          13.17,
+          78.25
+        ],
+        [
+          13.0,
+          77.8
+        ],
+        [
+          12.9716,
+          77.5946
+        ]
+      ],
+      "capacityKg": 15000,
+      "availableCapacityKg": 8000,
+      "cargoType": "electronics",
+      "departureTime": "2026-09-21T05:00:00",
+      "baseTripCost": 7500,
+      "status": "active"
+    }
+  ],
+  "requests": [
+    {
+      "requestId": "REQ-001",
+      "shipperName": "Lakshmi Textiles Pvt Ltd",
+      "pickup": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      },
+      "pickupName": "Chennai",
+      "drop": {
+        "lat": 11.341,
+        "lng": 77.7172
+      },
+      "dropName": "Erode",
+      "weightKg": 2000,
+      "cargoType": "textiles",
+      "status": "matched"
+    },
+    {
+      "requestId": "REQ-002",
+      "shipperName": "Sri Ganesh Electronics",
+      "pickup": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      },
+      "pickupName": "Chennai",
+      "drop": {
+        "lat": 11.6634,
+        "lng": 78.1488
+      },
+      "dropName": "Salem",
+      "weightKg": 500,
+      "cargoType": "electronics",
+      "status": "pending"
+    },
+    {
+      "requestId": "REQ-003",
+      "shipperName": "Meena Stores",
+      "pickup": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      },
+      "pickupName": "Chennai",
+      "drop": {
+        "lat": 10.9305,
+        "lng": 78.6177
+      },
+      "dropName": "Tiruchirappalli",
+      "weightKg": 1200,
+      "cargoType": "packaged_goods",
+      "status": "pending"
+    },
+    {
+      "requestId": "REQ-A99BB2D3",
+      "shipperName": "Ramesh Varma",
+      "pickup": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      },
+      "pickupName": "Chennai",
+      "drop": {
+        "lat": 11.341,
+        "lng": 77.7172
+      },
+      "dropName": "Erode",
+      "weightKg": 2000.0,
+      "cargoType": "textiles",
+      "createdAt": "2026-09-20T13:37:47.666437+00:00",
+      "status": "pending"
+    },
+    {
+      "requestId": "REQ-4375273B",
+      "shipperName": "Ramesh Varma",
+      "pickup": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      },
+      "pickupName": "Chennai",
+      "drop": {
+        "lat": 11.341,
+        "lng": 77.7172
+      },
+      "dropName": "Erode",
+      "weightKg": 2000.0,
+      "cargoType": "textiles",
+      "createdAt": "2026-09-20T13:47:48.965269+00:00",
+      "status": "pending"
+    },
+    {
+      "requestId": "REQ-6D809AA6",
+      "shipperName": "Ramesh Varma",
+      "pickup": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      },
+      "pickupName": "Chennai",
+      "drop": {
+        "lat": 11.341,
+        "lng": 77.7172
+      },
+      "dropName": "Erode",
+      "weightKg": 2000.0,
+      "cargoType": "textiles",
+      "createdAt": "2026-09-20T14:37:21.971112+00:00",
+      "status": "pending"
+    },
+    {
+      "requestId": "REQ-4EA15B49",
+      "shipperName": "Ramesh Varma",
+      "pickup": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      },
+      "pickupName": "Chennai",
+      "drop": {
+        "lat": 11.341,
+        "lng": 77.7172
+      },
+      "dropName": "Erode",
+      "weightKg": 2000.0,
+      "cargoType": "textiles",
+      "createdAt": "2026-09-20T14:54:04.429228+00:00",
+      "status": "pending"
+    },
+    {
+      "requestId": "REQ-CED31B8E",
+      "shipperName": "Ramesh Varma",
+      "pickup": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      },
+      "pickupName": "Chennai",
+      "drop": {
+        "lat": 10.9305,
+        "lng": 78.6177
+      },
+      "dropName": "Tiruchirappalli",
+      "weightKg": 200.0,
+      "cargoType": "hazardous",
+      "createdAt": "2026-09-20T14:55:00.683953+00:00",
+      "status": "pending"
+    },
+    {
+      "requestId": "REQ-7ADE8C3D",
+      "shipperName": "Ramesh Varma",
+      "pickup": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      },
+      "pickupName": "Chennai",
+      "drop": {
+        "lat": 11.341,
+        "lng": 77.7172
+      },
+      "dropName": "Erode",
+      "weightKg": 2000.0,
+      "cargoType": "textiles",
+      "createdAt": "2026-09-20T15:21:07.630786+00:00",
+      "status": "pending"
+    },
+    {
+      "requestId": "REQ-2FA7640A",
+      "shipperName": "Ramesh Varma",
+      "pickup": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      },
+      "pickupName": "Chennai",
+      "drop": {
+        "lat": 12.9165,
+        "lng": 79.1325
+      },
+      "dropName": "Vellore",
+      "weightKg": 2000.0,
+      "cargoType": "textiles",
+      "createdAt": "2026-09-20T16:09:28.301527+00:00",
+      "status": "pending"
+    },
+    {
+      "requestId": "REQ-0709E82D",
+      "shipperName": "Ramesh Varma",
+      "pickup": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      },
+      "pickupName": "Chennai",
+      "drop": {
+        "lat": 11.341,
+        "lng": 77.7172
+      },
+      "dropName": "Erode",
+      "weightKg": 20.0,
+      "cargoType": "chemicals",
+      "createdAt": "2026-09-20T16:17:00.238094+00:00",
+      "status": "pending"
+    },
+    {
+      "requestId": "REQ-5D3AD60C",
+      "shipperName": "Ramesh Varma",
+      "pickup": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      },
+      "pickupName": "Chennai",
+      "drop": {
+        "lat": 11.341,
+        "lng": 77.7172
+      },
+      "dropName": "Erode",
+      "weightKg": 2000.0,
+      "cargoType": "textiles",
+      "createdAt": "2026-09-21T17:58:04.959242+00:00",
+      "status": "pending"
+    }
+  ],
+  "matches": [],
+  "users": [
+    {
+      "userId": "usr-shipper-01",
+      "email": "shipper@smartlogistics.com",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "fullName": "Ramesh Varma",
+      "phone": "+91 98765 43210",
+      "userType": "Shipper",
+      "company": "Varma Freight & Logistics",
+      "location": "Chennai, Tamil Nadu",
+      "totalLoads": 28,
+      "completedDeliveries": 24,
+      "rating": 4.9,
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+      "createdAt": "2026-08-15T10:00:00Z"
+    },
+    {
+      "userId": "usr-owner-01",
+      "email": "owner@smartlogistics.com",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "fullName": "Rajesh Kumar",
+      "phone": "+91 94432 12345",
+      "userType": "Truck Owner",
+      "company": "Kumar Transport Fleet",
+      "location": "Coimbatore, Tamil Nadu",
+      "totalLoads": 45,
+      "completedDeliveries": 42,
+      "rating": 4.8,
+      "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+      "createdAt": "2026-08-10T09:00:00Z"
+    }
+  ],
+  "notifications": [
+    {
+      "notificationId": "notif-7c033861",
+      "userId": "usr-shipper-01",
+      "title": "Load-Sharing Request Submitted",
+      "message": "Requested 2000 kg load sharing on truck TN-38-A1234 (Chennai \u2192 Coimbatore).",
+      "type": "request",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": false,
+      "createdAt": "2026-09-21T17:58:04.993484+00:00"
+    },
+    {
+      "notificationId": "notif-4c943c5b",
+      "userId": "usr-shipper-01",
+      "title": "Shipment Request Created",
+      "message": "Request REQ-5D3AD60C for Chennai \u2192 Erode (2,000 kg textiles) is now active.",
+      "type": "request",
+      "relatedRouteId": "REQ-5D3AD60C",
+      "isRead": false,
+      "createdAt": "2026-09-21T17:58:04.970075+00:00"
+    },
+    {
+      "notificationId": "notif-5ac51e61",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Match Found",
+      "message": "Found 2 trucks for Chennai \u2192 Erode (2000 kg). Best match: TN-38-A1234 (99.2%).",
+      "type": "match",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": false,
+      "createdAt": "2026-09-21T17:58:02.113188+00:00"
+    },
+    {
+      "notificationId": "notif-73844591",
+      "userId": "usr-shipper-01",
+      "title": "Request Accepted",
+      "message": "Load request REQ-0709E82D for Chennai \u2192 Erode (20 kg) was accepted by truck owner.",
+      "type": "status",
+      "relatedRouteId": "REQ-0709E82D",
+      "isRead": false,
+      "createdAt": "2026-09-21T09:13:39.525655+00:00"
+    },
+    {
+      "notificationId": "notif-a99d764d",
+      "userId": "usr-shipper-01",
+      "title": "Load-Sharing Request Submitted",
+      "message": "Requested 20 kg load sharing on truck TN-38-A1234 (Chennai \u2192 Coimbatore).",
+      "type": "request",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": false,
+      "createdAt": "2026-09-20T16:17:00.291231+00:00"
+    },
+    {
+      "notificationId": "notif-9fa5af2b",
+      "userId": "usr-shipper-01",
+      "title": "Shipment Request Created",
+      "message": "Request REQ-0709E82D for Chennai \u2192 Erode (20 kg chemicals) is now active.",
+      "type": "request",
+      "relatedRouteId": "REQ-0709E82D",
+      "isRead": false,
+      "createdAt": "2026-09-20T16:17:00.242160+00:00"
+    },
+    {
+      "notificationId": "notif-ffb7e2b5",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Match Found",
+      "message": "Found 2 trucks for Chennai \u2192 Erode (20 kg). Best match: TN-38-A1234 (99.2%).",
+      "type": "match",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": false,
+      "createdAt": "2026-09-20T16:16:15.099499+00:00"
+    },
+    {
+      "notificationId": "notif-1a0023b7",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Capacity Matched!",
+      "message": "Truck TN-02-D3456 has 8,000 kg available along Chennai \u2192 Bengaluru. Match score: 91%.",
+      "type": "match",
+      "relatedRouteId": "TN-02-D3456",
+      "isRead": false,
+      "createdAt": "2026-09-20T16:13:37.079687+00:00"
+    },
+    {
+      "notificationId": "notif-c128b312",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Capacity Matched!",
+      "message": "Truck TN-02-D3456 has 8,000 kg available along Chennai \u2192 Bengaluru. Match score: 91%.",
+      "type": "match",
+      "relatedRouteId": "TN-02-D3456",
+      "isRead": true,
+      "createdAt": "2026-09-20T16:13:30.827676+00:00"
+    },
+    {
+      "notificationId": "notif-1dd233cf",
+      "userId": "usr-shipper-01",
+      "title": "Load-Sharing Request",
+      "message": "A shipper requested 1,500 kg capacity on your active Salem corridor trip.",
+      "type": "request",
+      "relatedRouteId": "REQ-002",
+      "isRead": true,
+      "createdAt": "2026-09-20T16:13:28.356856+00:00"
+    },
+    {
+      "notificationId": "notif-ce7e710e",
+      "userId": "usr-shipper-01",
+      "title": "Shipment Delivered!",
+      "message": "Your load was delivered safely in Coimbatore and verified by recipient OTP.",
+      "type": "delivery",
+      "relatedRouteId": "REQ-001",
+      "isRead": true,
+      "createdAt": "2026-09-20T16:13:25.295020+00:00"
+    },
+    {
+      "notificationId": "notif-7d922716",
+      "userId": "usr-shipper-01",
+      "title": "Load-Sharing Request Submitted",
+      "message": "Requested 2000 kg load sharing on truck TN-02-D3456 (Chennai \u2192 Bengaluru).",
+      "type": "request",
+      "relatedRouteId": "TN-02-D3456",
+      "isRead": true,
+      "createdAt": "2026-09-20T16:09:28.329182+00:00"
+    },
+    {
+      "notificationId": "notif-aa404006",
+      "userId": "usr-shipper-01",
+      "title": "Shipment Request Created",
+      "message": "Request REQ-2FA7640A for Chennai \u2192 Vellore (2,000 kg textiles) is now active.",
+      "type": "request",
+      "relatedRouteId": "REQ-2FA7640A",
+      "isRead": true,
+      "createdAt": "2026-09-20T16:09:28.307360+00:00"
+    },
+    {
+      "notificationId": "notif-25f7bff8",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Match Found",
+      "message": "Found 2 trucks for Chennai \u2192 Vellore (2000 kg). Best match: TN-38-A1234 (99.2%).",
+      "type": "match",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T16:08:30.091791+00:00"
+    },
+    {
+      "notificationId": "notif-f016f653",
+      "userId": "usr-shipper-01",
+      "title": "Load-Sharing Request Submitted",
+      "message": "Requested 2000 kg load sharing on truck TN-38-A1234 (Chennai \u2192 Coimbatore).",
+      "type": "request",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T15:21:07.660476+00:00"
+    },
+    {
+      "notificationId": "notif-f4bab7f3",
+      "userId": "usr-shipper-01",
+      "title": "Shipment Request Created",
+      "message": "Request REQ-7ADE8C3D for Chennai \u2192 Erode (2,000 kg textiles) is now active.",
+      "type": "request",
+      "relatedRouteId": "REQ-7ADE8C3D",
+      "isRead": true,
+      "createdAt": "2026-09-20T15:21:07.638411+00:00"
+    },
+    {
+      "notificationId": "notif-0bfa4a79",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Match Found",
+      "message": "Found 2 trucks for Chennai \u2192 Erode (2000 kg). Best match: TN-38-A1234 (99.2%).",
+      "type": "match",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T15:21:00.880543+00:00"
+    },
+    {
+      "notificationId": "notif-06ba02d3",
+      "userId": "usr-shipper-01",
+      "title": "Load-Sharing Request Submitted",
+      "message": "Requested 200 kg load sharing on truck TN-45-C9012 (Chennai \u2192 Madurai).",
+      "type": "request",
+      "relatedRouteId": "TN-45-C9012",
+      "isRead": true,
+      "createdAt": "2026-09-20T14:55:00.715264+00:00"
+    },
+    {
+      "notificationId": "notif-6c6fe97b",
+      "userId": "usr-shipper-01",
+      "title": "Shipment Request Created",
+      "message": "Request REQ-CED31B8E for Chennai \u2192 Tiruchirappalli (200 kg hazardous) is now active.",
+      "type": "request",
+      "relatedRouteId": "REQ-CED31B8E",
+      "isRead": true,
+      "createdAt": "2026-09-20T14:55:00.690710+00:00"
+    },
+    {
+      "notificationId": "notif-2e8718f0",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Match Found",
+      "message": "Found 1 trucks for Chennai \u2192 Tiruchirappalli (200 kg). Best match: TN-45-C9012 (89.2%).",
+      "type": "match",
+      "relatedRouteId": "TN-45-C9012",
+      "isRead": true,
+      "createdAt": "2026-09-20T14:54:55.392518+00:00"
+    },
+    {
+      "notificationId": "notif-6d5b0a7c",
+      "userId": "usr-shipper-01",
+      "title": "Load-Sharing Request Submitted",
+      "message": "Requested 2000 kg load sharing on truck TN-38-A1234 (Chennai \u2192 Coimbatore).",
+      "type": "request",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T14:54:04.462975+00:00"
+    },
+    {
+      "notificationId": "notif-ce33b382",
+      "userId": "usr-shipper-01",
+      "title": "Shipment Request Created",
+      "message": "Request REQ-4EA15B49 for Chennai \u2192 Erode (2,000 kg textiles) is now active.",
+      "type": "request",
+      "relatedRouteId": "REQ-4EA15B49",
+      "isRead": true,
+      "createdAt": "2026-09-20T14:54:04.434312+00:00"
+    },
+    {
+      "notificationId": "notif-864c82ea",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Match Found",
+      "message": "Found 2 trucks for Chennai \u2192 Erode (2000 kg). Best match: TN-38-A1234 (99.2%).",
+      "type": "match",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T14:54:00.088241+00:00"
+    },
+    {
+      "notificationId": "notif-0196392c",
+      "userId": "usr-shipper-01",
+      "title": "Load-Sharing Request Submitted",
+      "message": "Requested 2000 kg load sharing on truck TN-38-A1234 (Chennai \u2192 Coimbatore).",
+      "type": "request",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T14:37:22.010872+00:00"
+    },
+    {
+      "notificationId": "notif-510c19c9",
+      "userId": "usr-shipper-01",
+      "title": "Shipment Request Created",
+      "message": "Request REQ-6D809AA6 for Chennai \u2192 Erode (2,000 kg textiles) is now active.",
+      "type": "request",
+      "relatedRouteId": "REQ-6D809AA6",
+      "isRead": true,
+      "createdAt": "2026-09-20T14:37:21.980744+00:00"
+    },
+    {
+      "notificationId": "notif-07c74a6c",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Match Found",
+      "message": "Found 2 trucks for Chennai \u2192 Erode (2000 kg). Best match: TN-38-A1234 (99.2%).",
+      "type": "match",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T14:37:16.018742+00:00"
+    },
+    {
+      "notificationId": "notif-10fb6932",
+      "userId": "usr-shipper-01",
+      "title": "Load-Sharing Request Submitted",
+      "message": "Requested 2000 kg load sharing on truck TN-38-A1234 (Chennai \u2192 Coimbatore).",
+      "type": "request",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T13:47:48.992367+00:00"
+    },
+    {
+      "notificationId": "notif-1a437292",
+      "userId": "usr-shipper-01",
+      "title": "Shipment Request Created",
+      "message": "Request REQ-4375273B for Chennai \u2192 Erode (2,000 kg textiles) is now active.",
+      "type": "request",
+      "relatedRouteId": "REQ-4375273B",
+      "isRead": true,
+      "createdAt": "2026-09-20T13:47:48.970056+00:00"
+    },
+    {
+      "notificationId": "notif-42807410",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Match Found",
+      "message": "Found 2 trucks for Chennai \u2192 Erode (2000 kg). Best match: TN-38-A1234 (99.2%).",
+      "type": "match",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T13:47:45.359549+00:00"
+    },
+    {
+      "notificationId": "notif-40128b16",
+      "userId": "usr-shipper-01",
+      "title": "Load-Sharing Request Submitted",
+      "message": "Requested 2000 kg load sharing on truck TN-38-A1234 (Chennai \u2192 Coimbatore).",
+      "type": "request",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T13:37:47.694954+00:00"
+    },
+    {
+      "notificationId": "notif-83fdd19a",
+      "userId": "usr-shipper-01",
+      "title": "Shipment Request Created",
+      "message": "Request REQ-A99BB2D3 for Chennai \u2192 Erode (2,000 kg textiles) is now active.",
+      "type": "request",
+      "relatedRouteId": "REQ-A99BB2D3",
+      "isRead": true,
+      "createdAt": "2026-09-20T13:37:47.670706+00:00"
+    },
+    {
+      "notificationId": "notif-375e8ab4",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Match Found",
+      "message": "Found 2 trucks for Chennai \u2192 Erode (2000 kg). Best match: TN-38-A1234 (99.2%).",
+      "type": "match",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T13:37:45.288304+00:00"
+    },
+    {
+      "notificationId": "notif-11602390",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Match Found",
+      "message": "Found 1 trucks for Chennai \u2192 Bengaluru (2000 kg). Best match: TN-02-D3456 (99.2%).",
+      "type": "match",
+      "relatedRouteId": "TN-02-D3456",
+      "isRead": true,
+      "createdAt": "2026-09-20T13:36:33.319313+00:00"
+    },
+    {
+      "notificationId": "notif-2ede0189",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Match Found",
+      "message": "Found 2 trucks for Chennai \u2192 Erode (2000 kg). Best match: TN-38-A1234 (99.2%).",
+      "type": "match",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T13:36:13.044883+00:00"
+    },
+    {
+      "notificationId": "notif-001",
+      "userId": "usr-shipper-01",
+      "title": "New Truck Match Found!",
+      "message": "Truck TN-38-A1234 has 5,000 kg capacity available on Chennai \u2192 Coimbatore route. Save up to 75% on freight.",
+      "type": "match",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T17:30:00Z"
+    },
+    {
+      "notificationId": "notif-002",
+      "userId": "usr-shipper-01",
+      "title": "Load-Sharing Request Submitted",
+      "message": "Your request for 2,000 kg Textiles from Chennai to Erode was submitted and assigned REQ-001.",
+      "type": "request",
+      "relatedRouteId": "REQ-001",
+      "isRead": true,
+      "createdAt": "2026-09-20T16:15:00Z"
+    },
+    {
+      "notificationId": "notif-003",
+      "userId": "usr-shipper-01",
+      "title": "Request Accepted by Truck Owner",
+      "message": "Driver Murugan Selvam (TN-33-B5678) accepted your 500 kg shipment request to Salem.",
+      "type": "status",
+      "relatedRouteId": "TN-33-B5678",
+      "isRead": true,
+      "createdAt": "2026-09-20T14:00:00Z"
+    },
+    {
+      "notificationId": "notif-004",
+      "userId": "usr-shipper-01",
+      "title": "Truck Schedule Update",
+      "message": "Truck TN-45-C9012 departure updated to 07:30 AM from Madurai hub due to highway maintenance.",
+      "type": "truck_update",
+      "relatedRouteId": "TN-45-C9012",
+      "isRead": true,
+      "createdAt": "2026-09-20T13:45:00Z"
+    },
+    {
+      "notificationId": "notif-005",
+      "userId": "usr-shipper-01",
+      "title": "Delivery Completed Successfully",
+      "message": "Delivery completed for 1,200 kg Packaged Goods to Tiruchirappalli. Rating requested.",
+      "type": "delivery",
+      "relatedRouteId": "REQ-003",
+      "isRead": true,
+      "createdAt": "2026-09-19T18:00:00Z"
+    },
+    {
+      "notificationId": "notif-101",
+      "userId": "usr-owner-01",
+      "title": "New Load-Sharing Request",
+      "message": "Lakshmi Textiles requested 2,000 kg capacity on your Chennai \u2192 Coimbatore trip.",
+      "type": "request",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": false,
+      "createdAt": "2026-09-20T17:00:00Z"
+    },
+    {
+      "notificationId": "notif-102",
+      "userId": "usr-owner-01",
+      "title": "Capacity Utilization Alert",
+      "message": "Your truck TN-38-A1234 reached 90% capacity after matching Erode drop.",
+      "type": "truck_update",
+      "relatedRouteId": "TN-38-A1234",
+      "isRead": true,
+      "createdAt": "2026-09-20T15:20:00Z"
+    }
+  ]
+}

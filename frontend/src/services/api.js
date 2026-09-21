@@ -42,17 +42,25 @@ api.interceptors.request.use((config) => {
 
 let backendAvailable = null // null = unknown, true/false = tested
 let backendCheckPromise = null
+let lastCheckTime = 0
+const RECHECK_INTERVAL = 10000 // re-check after 10s if offline
 
 async function checkBackend() {
-  if (backendAvailable !== null) return backendAvailable
+  const now = Date.now()
+  if (backendAvailable === true) return true
+  if (backendAvailable === false && now - lastCheckTime < RECHECK_INTERVAL) {
+    return false
+  }
   if (backendCheckPromise) return backendCheckPromise
 
   backendCheckPromise = (async () => {
     try {
-      await api.get('/health')
+      await api.get('/health', { timeout: 3000 })
       backendAvailable = true
+      lastCheckTime = Date.now()
     } catch {
       backendAvailable = false
+      lastCheckTime = Date.now()
       console.warn('⚠️ Backend unavailable — using mock fallback.')
     } finally {
       backendCheckPromise = null

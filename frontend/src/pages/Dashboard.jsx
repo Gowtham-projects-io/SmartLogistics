@@ -35,12 +35,12 @@ export default function Dashboard({ onStartDemo }) {
   const a = analytics || {}
 
   const STATS = [
-    { title: 'Active Trucks',     value: a.activeTrucks ?? 4,               icon: Truck,        color: 'navy',   trend: 8,  subtitle: 'Tamil Nadu' },
+    { title: 'Active Trucks',     value: a.activeTrucks ?? 4,               icon: Truck,        color: 'navy',   trend: 8,  subtitle: 'Tamil Nadu fleet' },
     { title: 'Available Capacity',value: a.availableCapacityKg ?? 22200,    unit: ' kg', icon: Activity, color: 'navy', trend: -3, subtitle: 'of 45,000 kg total' },
     { title: 'Pending Shipments', value: a.pendingShipments ?? 2,           icon: Package,      color: 'orange', subtitle: 'Awaiting match' },
-    { title: 'Matched',           value: a.successfulMatches ?? 12,         icon: GitMerge,     color: 'green',  trend: 23 },
-    { title: 'Total Savings',     value: a.totalSavingsInr ?? 87400, prefix:'₹', icon: TrendingDown, color: 'green', trend: 31 },
-    { title: 'Utilization',       value: 51,                                unit: '%', icon: Zap, color: 'orange', trend: 14 },
+    { title: 'Matched Loads',     value: a.successfulMatches ?? 12,         icon: GitMerge,     color: 'green',  trend: 23, subtitle: 'Trips shared' },
+    { title: 'Total Savings',     value: a.totalSavingsInr ?? 87400, prefix:'₹', icon: TrendingDown, color: 'green', trend: 31, subtitle: 'Vs dedicated trucks' },
+    { title: 'Fleet Utilization', value: 51,                                unit: '%', icon: Zap, color: 'orange', trend: 14, subtitle: 'Active capacity' },
   ]
 
   const capacityData = (a.capacityByRoute || []).map(r => ({

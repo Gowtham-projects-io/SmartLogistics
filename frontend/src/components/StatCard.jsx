@@ -30,55 +30,85 @@ export default function StatCard({
     : parseFloat(String(value).replace(/[^\d.]/g, '')) || 0
   const animated = useCountUp(numericValue)
 
+  // Vibrant solid badges for maximum visibility and contrast on mobile
   const colorMap = {
-    indigo: { icon: 'bg-blue-50 text-[#0F2747] border-blue-200', value: 'text-[#0F2747]', glow: 'hover:border-[#0F2747]/30' },
-    navy:   { icon: 'bg-slate-100 text-[#0F2747] border-slate-200', value: 'text-[#0F2747]', glow: 'hover:border-[#0F2747]/30' },
-    green:  { icon: 'bg-emerald-50 text-[#16A34A] border-emerald-200', value: 'text-[#16A34A]', glow: 'hover:border-emerald-300' },
-    orange: { icon: 'bg-amber-50 text-[#D97706] border-amber-200', value: 'text-[#D97706]', glow: 'hover:border-amber-300' },
-    blue:   { icon: 'bg-sky-50 text-sky-700 border-sky-200', value: 'text-[#0F2747]', glow: 'hover:border-blue-300' },
+    indigo: {
+      badge: 'bg-[#0F2747] text-white shadow-xs',
+      value: 'text-[#0F2747]',
+      glow: 'hover:border-[#0F2747]/40',
+    },
+    navy: {
+      badge: 'bg-[#0F2747] text-white shadow-xs',
+      value: 'text-[#0F2747]',
+      glow: 'hover:border-[#0F2747]/40',
+    },
+    green: {
+      badge: 'bg-[#16A34A] text-white shadow-xs',
+      value: 'text-[#15803D]',
+      glow: 'hover:border-emerald-300',
+    },
+    orange: {
+      badge: 'bg-[#F59E0B] text-[#0F2747] shadow-xs',
+      value: 'text-[#D97706]',
+      glow: 'hover:border-amber-300',
+    },
+    blue: {
+      badge: 'bg-[#2563EB] text-white shadow-xs',
+      value: 'text-[#1D4ED8]',
+      glow: 'hover:border-blue-300',
+    },
   }
 
   const c = colorMap[color] || colorMap.navy
 
-  const displayValue = numericValue >= 1000
-    ? `${prefix}${animated.toLocaleString('en-IN')}${unit}`
-    : `${prefix}${animated}${unit}`
+  const formattedNum = numericValue >= 1000
+    ? animated.toLocaleString('en-IN')
+    : String(animated)
 
   return (
-    <div className={`card !p-3 sm:!p-4 transition-all duration-200 cursor-default ${c.glow} flex flex-col justify-between min-h-[125px] sm:min-h-[135px]`}>
-      {/* Top Row: Icon on left, Trend Pill on right */}
-      <div className="flex items-center justify-between gap-2 mb-2">
-        <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl border flex items-center justify-center shrink-0 ${c.icon}`}>
-          <Icon size={16} className="sm:hidden shrink-0" />
-          <Icon size={18} className="hidden sm:block shrink-0" />
+    <div className={`bg-white rounded-2xl border border-[#CBD5E1] p-3 sm:p-4 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between min-h-[132px] sm:min-h-[144px] ${c.glow}`}>
+      {/* Top Row: Crisp Solid Icon + Trend Pill */}
+      <div className="flex items-center justify-between gap-2">
+        <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0 ${c.badge}`}>
+          <Icon size={18} strokeWidth={2.3} className="shrink-0" />
         </div>
 
         {trend !== undefined && (
-          <div className={`flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-lg border shrink-0 ${
+          <div className={`flex items-center gap-0.5 text-[10px] sm:text-xs font-black px-2 py-0.5 rounded-full border shrink-0 ${
             trend >= 0
-              ? 'text-[#16A34A] bg-emerald-50 border-emerald-200'
+              ? 'text-[#15803D] bg-emerald-50 border-emerald-200'
               : 'text-[#DC2626] bg-red-50 border-red-200'
           }`}>
-            {trend >= 0 ? <TrendingUp size={11} className="stroke-[2.5]" /> : <TrendingDown size={11} className="stroke-[2.5]" />}
+            {trend >= 0 ? <TrendingUp size={11} strokeWidth={2.5} /> : <TrendingDown size={11} strokeWidth={2.5} />}
             <span>{Math.abs(trend)}%</span>
           </div>
         )}
       </div>
 
-      {/* Main Metric Value */}
-      <div className="my-auto py-0.5">
-        <div className={`font-black tracking-tight ${c.value} tabular-nums text-lg sm:text-2xl leading-none`}>
-          {displayValue}
-        </div>
+      {/* Main Metric Value with distinct unit styling */}
+      <div className="my-1.5 flex items-baseline gap-1 flex-wrap">
+        {prefix && (
+          <span className="text-base sm:text-lg font-extrabold text-[#0F2747] leading-none">
+            {prefix}
+          </span>
+        )}
+        <span className={`text-xl sm:text-2xl font-black tracking-tight ${c.value} tabular-nums leading-none`}>
+          {formattedNum}
+        </span>
+        {unit && (
+          <span className="text-xs sm:text-sm font-bold text-[#64748B] leading-none">
+            {unit}
+          </span>
+        )}
       </div>
 
-      {/* Title & Subtitle without ellipsis truncation */}
-      <div className="mt-1">
-        <div className="font-bold text-xs sm:text-sm text-[#172033] leading-tight">
+      {/* Title & Subtitle: 100% visible without clipping */}
+      <div>
+        <div className="font-extrabold text-xs sm:text-sm text-[#0F2747] leading-tight break-words">
           {title}
         </div>
         {subtitle && (
-          <div className="text-[11px] font-medium text-[#64748B] mt-0.5 leading-tight">
+          <div className="text-[10px] sm:text-xs font-semibold text-[#64748B] mt-0.5 leading-tight break-words">
             {subtitle}
           </div>
         )}

@@ -8,7 +8,7 @@ import { findMatchingTrucks } from '../utils/routeMatching'
 import { calculatePrice } from '../utils/pricing'
 import { checkCargoCompatibility } from '../utils/cargoCompatibility'
 
-const BASE_URL = '/api'
+const BASE_URL = import.meta.env.VITE_API_URL || '/api'
 
 const api = axios.create({
   baseURL: BASE_URL,

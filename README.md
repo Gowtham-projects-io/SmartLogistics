@@ -3,6 +3,8 @@
 > AI-powered shared truck capacity and route-matching platform.
 > Match unused truck capacity with shipments along existing routes — cutting costs by up to 75%.
 
+🌐 **Live Demo**: [https://gowtham-projects-io.github.io/SmartLogistics/](https://gowtham-projects-io.github.io/SmartLogistics/)
+
 ---
 
 ## Quick Start

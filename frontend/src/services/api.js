@@ -40,12 +40,20 @@ api.interceptors.request.use((config) => {
   return config
 })
 
-let backendAvailable = null // null = unknown, true/false = tested
+const isGitHubPages = typeof window !== 'undefined' && window.location.hostname.includes('github.io')
+const hasExternalApi = Boolean(import.meta.env.VITE_API_URL)
+
+let backendAvailable = isGitHubPages && !hasExternalApi ? false : null
 let backendCheckPromise = null
 let lastCheckTime = 0
-const RECHECK_INTERVAL = 10000 // re-check after 10s if offline
+const RECHECK_INTERVAL = 15000 // re-check after 15s if offline on localhost
 
 async function checkBackend() {
+  // If running as static site on GitHub Pages without external backend, run purely in client demo mode
+  if (isGitHubPages && !hasExternalApi) {
+    return false
+  }
+
   const now = Date.now()
   if (backendAvailable === true) return true
   if (backendAvailable === false && now - lastCheckTime < RECHECK_INTERVAL) {
@@ -55,13 +63,12 @@ async function checkBackend() {
 
   backendCheckPromise = (async () => {
     try {
-      await api.get('/health', { timeout: 3000 })
+      await api.get('/health', { timeout: 2500 })
       backendAvailable = true
       lastCheckTime = Date.now()
     } catch {
       backendAvailable = false
       lastCheckTime = Date.now()
-      console.warn('⚠️ Backend unavailable — using mock fallback.')
     } finally {
       backendCheckPromise = null
     }
@@ -205,10 +212,43 @@ export async function fetchNotifications() {
       }
     } catch {}
   }
+  const initial = [
+    {
+      notificationId: 'notif-demo-1',
+      userId: 'usr-shipper-01',
+      title: 'Shared Truck Matched',
+      message: 'Truck TN-38-A1234 has 5,000 kg capacity along Chennai → Coimbatore. 94% match score.',
+      type: 'match',
+      relatedRouteId: 'TN-38-A1234',
+      isRead: false,
+      createdAt: new Date(Date.now() - 1000 * 60 * 15).toISOString(),
+    },
+    {
+      notificationId: 'notif-demo-2',
+      userId: 'usr-shipper-01',
+      title: 'Shipment Dispatched',
+      message: 'Your load on TN-02-D3456 has departed Chennai hub toward Bengaluru.',
+      type: 'truck_update',
+      relatedRouteId: 'TN-02-D3456',
+      isRead: false,
+      createdAt: new Date(Date.now() - 1000 * 60 * 45).toISOString(),
+    },
+    {
+      notificationId: 'notif-demo-3',
+      userId: 'usr-shipper-01',
+      title: 'Price Optimization Alert',
+      message: 'Shared booking saved ₹7,200 (75.8%) compared to dedicated container booking.',
+      type: 'status',
+      relatedRouteId: 'REQ-001',
+      isRead: true,
+      createdAt: new Date(Date.now() - 1000 * 60 * 180).toISOString(),
+    },
+  ]
+  try { localStorage.setItem('smartlogistics_notifications', JSON.stringify(initial)) } catch {}
   return {
-    notifications: [],
-    unreadCount: 0,
-    total: 0,
+    notifications: initial,
+    unreadCount: 2,
+    total: initial.length,
   }
 }
 
@@ -228,6 +268,12 @@ export async function createNotification(payload) {
     isRead: false,
     createdAt: new Date().toISOString(),
   }
+  try {
+    const saved = localStorage.getItem('smartlogistics_notifications')
+    const current = saved ? JSON.parse(saved) : []
+    const updated = [newNotif, ...current]
+    localStorage.setItem('smartlogistics_notifications', JSON.stringify(updated))
+  } catch {}
   return newNotif
 }
 
@@ -237,6 +283,14 @@ export async function markNotificationAsRead(notificationId) {
     const { data } = await api.patch(`/notifications/${notificationId}/read`)
     return data
   }
+  try {
+    const saved = localStorage.getItem('smartlogistics_notifications')
+    if (saved) {
+      const items = JSON.parse(saved)
+      const updated = items.map(n => n.notificationId === notificationId ? { ...n, isRead: true } : n)
+      localStorage.setItem('smartlogistics_notifications', JSON.stringify(updated))
+    }
+  } catch {}
   return { success: true }
 }
 
@@ -246,6 +300,14 @@ export async function markAllNotificationsAsRead() {
     const { data } = await api.post('/notifications/mark-all-read')
     return data
   }
+  try {
+    const saved = localStorage.getItem('smartlogistics_notifications')
+    if (saved) {
+      const items = JSON.parse(saved)
+      const updated = items.map(n => ({ ...n, isRead: true }))
+      localStorage.setItem('smartlogistics_notifications', JSON.stringify(updated))
+    }
+  } catch {}
   return { success: true }
 }
 
@@ -255,7 +317,7 @@ export async function clearAllNotifications() {
     const { data } = await api.delete('/notifications/clear')
     return data
   }
-  localStorage.setItem('smartlogistics_notifications', JSON.stringify([]))
+  try { localStorage.setItem('smartlogistics_notifications', JSON.stringify([])) } catch {}
   return { success: true }
 }
 
@@ -265,6 +327,14 @@ export async function deleteSingleNotification(notificationId) {
     const { data } = await api.delete(`/notifications/${notificationId}`)
     return data
   }
+  try {
+    const saved = localStorage.getItem('smartlogistics_notifications')
+    if (saved) {
+      const items = JSON.parse(saved)
+      const updated = items.filter(n => n.notificationId !== notificationId)
+      localStorage.setItem('smartlogistics_notifications', JSON.stringify(updated))
+    }
+  } catch {}
   return { success: true }
 }
 
@@ -274,7 +344,40 @@ export async function triggerDemoNotification(eventType = 'match') {
     const { data } = await api.post(`/notifications/trigger-demo-event?event_type=${eventType}`)
     return data.notification
   }
-  return null
+  const templates = {
+    match: {
+      title: 'New Truck Capacity Matched!',
+      message: 'Truck TN-02-D3456 has 8,000 kg available along Chennai → Bengaluru. Match score: 91%.',
+      type: 'match',
+      relatedRouteId: 'TN-02-D3456',
+    },
+    request: {
+      title: 'Load-Sharing Request',
+      message: 'A shipper requested 1,500 kg capacity on your active Salem corridor trip.',
+      type: 'request',
+      relatedRouteId: 'REQ-002',
+    },
+    status: {
+      title: 'Load Request Accepted',
+      message: 'Truck owner approved your shared space booking for ₹2,300. Truck is en route.',
+      type: 'status',
+      relatedRouteId: 'TN-38-A1234',
+    },
+    truck_update: {
+      title: 'Truck Approaching Pickup',
+      message: 'Driver Rajesh Kumar is 15 minutes away from your Chennai warehouse.',
+      type: 'truck_update',
+      relatedRouteId: 'TN-38-A1234',
+    },
+    delivery: {
+      title: 'Shipment Delivered!',
+      message: 'Your load was delivered safely in Coimbatore and verified by recipient OTP.',
+      type: 'delivery',
+      relatedRouteId: 'REQ-001',
+    },
+  }
+  const tpl = templates[eventType] || templates.match
+  return createNotification({ ...tpl, isRead: false })
 }
 
 // ---------------------------------------------------------------------------
@@ -309,6 +412,11 @@ export async function fetchRequests() {
     const { data } = await api.get('/requests')
     return data.requests
   }
+  const saved = localStorage.getItem('smartlogistics_requests')
+  if (saved) {
+    try { return JSON.parse(saved) } catch {}
+  }
+  try { localStorage.setItem('smartlogistics_requests', JSON.stringify(MOCK_REQUESTS)) } catch {}
   return MOCK_REQUESTS
 }
 
@@ -318,7 +426,41 @@ export async function createRequest(payload) {
     const { data } = await api.post('/requests', payload)
     return data
   }
-  return { requestId: `REQ-${Date.now().toString().slice(-6)}`, message: 'Created (mock)' }
+  const newReq = {
+    requestId: `REQ-${Date.now().toString().slice(-6)}`,
+    shipperName: payload.shipperName || 'Demo Shipper',
+    pickupName: payload.pickupName || 'Pickup',
+    dropName: payload.dropName || 'Drop',
+    weightKg: payload.weightKg || 1000,
+    cargoType: payload.cargoType || 'General Goods',
+    status: 'pending',
+    createdAt: new Date().toISOString(),
+    ...payload,
+  }
+  try {
+    const saved = localStorage.getItem('smartlogistics_requests')
+    const current = saved ? JSON.parse(saved) : MOCK_REQUESTS
+    const updated = [newReq, ...current]
+    localStorage.setItem('smartlogistics_requests', JSON.stringify(updated))
+  } catch {}
+  return { requestId: newReq.requestId, message: 'Created (local mode)', request: newReq }
+}
+
+export async function updateRequestStatus(requestId, status) {
+  const live = await checkBackend()
+  if (live) {
+    try {
+      const { data } = await api.patch(`/requests/${requestId}/status`, { status })
+      return data
+    } catch {}
+  }
+  try {
+    const saved = localStorage.getItem('smartlogistics_requests')
+    const current = saved ? JSON.parse(saved) : MOCK_REQUESTS
+    const updated = current.map(r => r.requestId === requestId ? { ...r, status } : r)
+    localStorage.setItem('smartlogistics_requests', JSON.stringify(updated))
+  } catch {}
+  return { success: true }
 }
 
 // ---------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Plus, Package, Clock, CheckCircle, AlertCircle, Check, X, CheckCheck } from 'lucide-react'
-import { fetchRequests, createRequest } from '../services/api'
+import { fetchRequests, createRequest, updateRequestStatus } from '../services/api'
 import { useNotifications } from '../context/NotificationContext'
 import MobileHeader from '../components/MobileHeader'
 
@@ -30,6 +30,7 @@ export default function ShipmentRequests() {
     setRequests(prev =>
       prev.map(r => (r.requestId === requestId ? { ...r, status: newStatus } : r))
     )
+    await updateRequestStatus(requestId, newStatus)
 
     const target = requests.find(r => r.requestId === requestId)
     const title = newStatus === 'matched' ? 'Request Accepted' : 'Request Rejected'
